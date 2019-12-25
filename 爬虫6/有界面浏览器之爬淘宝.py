@@ -6,7 +6,7 @@ import time, re
 def search_product():
     driver.find_element_by_xpath('//*[@id="q"]').send_keys(k)
     driver.find_element_by_xpath('//*[@id="J_TSearchForm"]/div[1]/button').click()
-    driver.implicitly_wait(100)#等待验证所停留的时间,可以给长一点
+    driver.implicitly_wait(100)#隐士等待，等待验证所停留的时间,可以给长一点，避免浏览器网速卡顿或者网络不畅通情况下加载不完全。
     token = driver.find_element_by_xpath('//*[@id="mainsrp-pager"]/div/div/div/div[1]').text
     token = int(re.compile('(\d+)').search(token).group(1))
     return token
